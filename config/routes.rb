@@ -1,4 +1,6 @@
 TyaniTolkay::Application.routes.draw do
+  devise_for :users
+
   root :to => "searcher#main"
 
   match "main" => "searcher#main"
