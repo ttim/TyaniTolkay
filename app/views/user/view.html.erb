@@ -1,0 +1,12 @@
+<h1>User view</h1>
+<p>User name: <%= @user.name %></p>
+<p>User email: <%= @user.email %></p>
+<p>User role: <%= @user.role %>
+  <% if current_user != nil && current_user.can_promote?(@user, :admin) %>
+      , <%= link_to "To admin", user_to_admin_path %>
+  <% end %>
+  <% if current_user != nil && current_user.can_promote?(@user, :moderator) %>
+      , <%= link_to "To moderator", user_to_moderator_path %>
+  <% end %>
+</p>
+<%= render :partial => "partials/view_ads", :locals => { :ads => @ads} %>

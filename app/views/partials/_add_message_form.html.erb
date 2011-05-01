@@ -1,0 +1,14 @@
+<% if user_signed_in? %>
+<div style="display: <%= is_visible ? "block" : "none" %>" id="form<%= parent_message.id if parent_message != nil %>">
+  <% form_for Message.new({:message => parent_message, :user => current_user, :ad => ad}), :url => create_message_path do |f| %>
+      <p>
+        <%= f.text_area :text, :size => "50x2" %></p>
+
+      <%= f.hidden_field :message_id %>
+      <%= f.hidden_field :user_id %>
+      <%= f.hidden_field :ad_id %>
+
+      <p><%= f.submit "Create" %></p>
+  <% end %>
+</div>
+<% end %>

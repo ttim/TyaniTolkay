@@ -1,0 +1,15 @@
+<% if message.visisble_for_user?(current_user) %>
+    <div style="margin-left:30px">
+      <b><%= link_to message.user.name, view_user_path(message.user) %></b><br/>
+      <%= message.text %>
+      <% if user_signed_in? %>
+          <%= link_to "[reply]", "javascript:toogle(#{message.id})", :id => "reply#{message.id}" %>
+          <%= link_to "[hide]", "javascript:toogle(#{message.id})", :id => "hidereply#{message.id}", :style => "display:none" %>
+          <%= render :partial => 'partials/add_message_form', :locals => {:parent_message => message, :ad => message.ad, :is_visible => false} %>
+      <% end %>
+
+      <% message.children_messages.each do |message| %>
+          <%= render :partial => 'partials/view_message', :locals => {:message => message} %>
+      <% end %>
+    </div>
+<% end %>

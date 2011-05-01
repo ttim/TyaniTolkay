@@ -1,0 +1,2 @@
+<% first = true
+   tags.split(",").map { |e| e.strip }.each do |tag| %><%= ", " unless first %><% first = false %><%= link_to tag, search_path(:q => tag) %><% end %>

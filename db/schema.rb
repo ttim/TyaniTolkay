@@ -10,7 +10,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110424141243) do
+ActiveRecord::Schema.define(:version => 20110430143605) do
+
+  create_table "ads", :force => true do |t|
+    t.string   "desc"
+    t.string   "tags"
+    t.integer  "user_id"
+    t.integer  "price"
+    t.string   "tags_for_search"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "messages", :force => true do |t|
+    t.string   "text"
+    t.integer  "user_id"
+    t.integer  "message_id"
+    t.integer  "ad_id"
+    t.integer  "reply_user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false

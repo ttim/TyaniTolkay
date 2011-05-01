@@ -1,10 +1,24 @@
 TyaniTolkay::Application.routes.draw do
-  devise_for :users
-
   root :to => "searcher#main"
 
-  match "main" => "searcher#main"
-  match "search" => "searcher#search"
+  match "main" => "searcher#main", :as => :main
+  match "search" => "searcher#search", :as => :search
+
+  match "user/list" => "user#list", :as => :user_list
+  match "user/:id" => "user#view", :as => :view_user
+  match "user/:id/to_admin" => "user#to_admin", :as => :user_to_admin
+  match "user/:id/to_moderator" => "user#to_moderator", :as => :user_to_moderator
+  match "user/:id/remove" => "user#remove", :as => :remove_user
+
+  match "ad/save" => "ad#save", :as => :save_ad
+  match "ad/new" => "ad#new", :as => :create_ad
+  match "ad/:id" => "ad#view", :as => :view_ad
+  match "ad/:id/remove" => "ad#remove", :as => :remove_ad
+  match "ad/:id/edit" => "ad#edit", :as => :edit_ad
+
+  match "message/create" => "message#create", :as => :create_message
+
+  devise_for :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -9,9 +9,11 @@
 <body>
 <div id="_auth">
   <% if (user_signed_in?) %>
-      <b><%= current_user.name %>
+      <b><%= link_to current_user.name, view_user_path(current_user) %>
         <%= "("+current_user.role+")" unless current_user.role == "user" %>
       </b>: <%= link_to "Logout", :destroy_user_session %>
+      <br/>
+      <%= link_to "Add new ad", create_ad_path %>
   <% else %>
       <%= link_to "Login", :new_user_session %> <%= link_to "Registration", :new_user_registration %>
   <% end %>

@@ -1,0 +1,11 @@
+<h2>Ads</h2>
+<% ads.each do |ad| %>
+    <p>Description: <%= ad.desc %></p>
+    <p>Tags: <%= render :partial => "partials/tags", :locals => {:tags => ad.tags} %></p>
+    <p>Price: <%= ad.price %></p>
+    <p><%= link_to "View", view_ad_path(ad.id) %></p>
+    <% if current_user.can_remove_ad?(ad) %>
+        <%= link_to "Delete", remove_ad_path(ad.id) %>
+    <% end %>
+    <hr/>
+<% end %>

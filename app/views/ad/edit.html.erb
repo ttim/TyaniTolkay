@@ -1,0 +1,13 @@
+<h1>Ad#edit</h1>
+<%= form_for(@ad, :url => save_ad_path(), :html => {:method => :post}) do |f| %>
+    <p><%= f.label "Description: " %>
+      <%= f.text_field :desc %></p>
+
+    <p><%= f.label "Price: " %>
+      <%= f.text_field :price %></p>
+
+    <p><%= f.label "Tags: " %>
+      <%= f.text_field :tags %></p>
+
+    <p><%= f.submit "Update" %></p>
+<% end %>
