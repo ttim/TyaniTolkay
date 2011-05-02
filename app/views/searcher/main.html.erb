@@ -1,6 +1,6 @@
 <%= render :partial => 'partials/view_search_text_box',
            :locals => {:query => @query, :price_to => @price_to} %>
-<div style="white-space:pre-wrap">
+<div style="white-space:pre-wrap;" align="center">
   <% @tags_to_cloud.each do |tag_with_coeff| %>
       <% tag = tag_with_coeff[:tag]
          coeff = tag_with_coeff[:coeff] %><%= link_to tag, search_path(:q => tag), :style => "font-size:#{coeff*10}pt;" %><% end %>
