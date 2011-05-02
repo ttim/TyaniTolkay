@@ -1,14 +1,16 @@
 module ApplicationHelper
-  def is_num?(str)
-    if str == nil then
-      return false
-    end
-    Integer(str)
-  rescue ArgumentError
-    false
-  else
-    true
+
+end
+
+def is_num?(str)
+  if str == nil then
+    return false
   end
+  Integer(str)
+rescue ArgumentError
+  false
+else
+  true
 end
 
 class Array
