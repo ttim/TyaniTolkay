@@ -1,12 +1,14 @@
-<h1>User view</h1>
-<p>User name: <%= @user.name %></p>
-<p>User email: <%= @user.email %></p>
-<p>User role: <%= @user.role %>
+<h1>Пользователь</h1>
+<div>Имя: <%= @user.name %></div>
+<div>Email: <%= @user.email %></div>
+<div>Роль: <%= @user.role %>
   <% if current_user != nil && current_user.can_promote?(@user, :admin) %>
       , <%= link_to "To admin", user_to_admin_path %>
   <% end %>
   <% if current_user != nil && current_user.can_promote?(@user, :moderator) %>
       , <%= link_to "To moderator", user_to_moderator_path %>
   <% end %>
-</p>
+</div>
+<br>
+<h1>Объявления</h1>
 <%= render :partial => "partials/view_ads", :locals => { :ads => @ads} %>

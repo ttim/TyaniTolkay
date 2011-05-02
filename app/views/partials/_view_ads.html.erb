@@ -1,11 +1,14 @@
-<h2>Ads</h2>
 <% ads.each do |ad| %>
-    <p>Description: <%= ad.desc %></p>
-    <p>Tags: <%= render :partial => "partials/tags", :locals => {:tags => ad.tags} %></p>
-    <p>Price: <%= ad.price %></p>
-    <p><%= link_to "View", view_ad_path(ad.id) %></p>
+    <div>Описание: <%= ad.desc %></div>
+    <div>Тэги: <%= render :partial => "partials/tags", :locals => {:tags => ad.tags} %></div>
+    <div>Цена: <%= ad.price %></div>
+    <div><%= link_to "Просмотр", view_ad_path(ad.id) %></div>
     <% if current_user.can_remove_ad?(ad) %>
-        <%= link_to "Delete", remove_ad_path(ad.id) %>
+        <%= link_to "Удалить", remove_ad_path(ad.id) %>
     <% end %>
-    <hr/>
+    <hr width="90%" align="left"/>
+<% end %>
+
+<% if ads.length == 0 %>
+    <h2>Нет объявлений...</h2>
 <% end %>

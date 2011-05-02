@@ -24,7 +24,7 @@
 
 #content { 
   float: left;
-  width: 589px;
+  width: 559px;
   height: 100%;
   min-height: 100%; 
   
@@ -45,7 +45,7 @@
  **************************************************************/
 
 #header {
-  padding: 60px 0 2em 49px;  
+  padding: 60px 0 2em 49px;
   background: url(/images/bg/header.jpg) no-repeat top center;
 }
 
@@ -78,7 +78,7 @@
  **************************************************************/
 
 ul#menu {
-  width: 491px;
+  width: 511px;
   margin: 0 auto;  
   padding: 0 !important;
   padding: 0 0 0 10px;  
@@ -133,6 +133,12 @@ ul.four li a {
 ul.five li a {
   width: 20%;
 }
+
+
+/**************************************************************
+   #search_text_box
+ **************************************************************/
+
 
 /**************************************************************
    #page: Holds the main page content.

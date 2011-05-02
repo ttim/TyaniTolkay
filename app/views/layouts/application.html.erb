@@ -52,13 +52,21 @@
                 the widths for 2, 3, 4 and 5 item menus. -->
     <!-- #page: holds all page content, as well as footer -->
     <% path = request.env['PATH_INFO'] %>
-    <ul id="menu" class="two">
+    <ul id="menu" class="three">
       <li>
-        <a href="<%= main_path %>"
+      <a href="<%= main_path %>"
            title="Поиск по объявлениям" class="<%= path == main_path ? "here" : "" %>">
-          <span class="big">О</span>бъявления
+        <span class="big">О</span>бъявления
+      </a>
+      </li>
+
+      <li>
+        <a href="<%= user_signed_in? ? view_user_path(current_user) : new_user_session_path %>"
+           title="Объявления созданные Вами" class="<%= path == view_user_path(current_user) ? "here" : "" %>">
+          <span class="big">Л</span>ичный кабинет
         </a>
       </li>
+
       <li>
         <a href="<%= user_signed_in? ? create_ad_path : new_user_session_path %>"
            title="Разместить объявление" class="<%= path == create_ad_path ? "here" : "" %>">
@@ -66,7 +74,6 @@
         </a>
       </li>
     </ul>
-
 
     <div id="page">
 

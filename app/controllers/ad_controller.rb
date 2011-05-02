@@ -5,6 +5,7 @@ class AdController < ApplicationController
 
   def edit
     @ad = Ad.find_by_id(params[:id])
+    @action = :edit
   end
 
   def save
@@ -27,6 +28,7 @@ class AdController < ApplicationController
 
   def new
     @ad = Ad.new
+    @action = :new
     render 'ad/edit'
   end
 end

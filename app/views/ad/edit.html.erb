@@ -1,13 +1,13 @@
-<h1>Ad#edit</h1>
+<h1><%=  @action == :new ? "Создать объявление" : "Обновить объявление"%></h1>
 <%= form_for(@ad, :url => save_ad_path(), :html => {:method => :post}) do |f| %>
-    <p><%= f.label "Description: " %>
+    <p><%= f.label "Описание: " %>
       <%= f.text_field :desc %></p>
 
-    <p><%= f.label "Price: " %>
+    <p><%= f.label "Цена: " %>
       <%= f.text_field :price %></p>
 
-    <p><%= f.label "Tags: " %>
+    <p><%= f.label "Тэги: " %>
       <%= f.text_field :tags %></p>
 
-    <p><%= f.submit "Update" %></p>
+    <p><%= f.submit (@action == :new ? "Создать" : "Обновить") %></p>
 <% end %>
