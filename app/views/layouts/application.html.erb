@@ -62,7 +62,7 @@
 
       <li>
         <a href="<%= user_signed_in? ? view_user_path(current_user) : new_user_session_path %>"
-           title="Объявления созданные Вами" class="<%= path == view_user_path(current_user) ? "here" : "" %>">
+           title="Объявления созданные Вами" class="<%= user_signed_in? ? (path == view_user_path(current_user) ? "here" : "") : "" %>">
           <span class="big">Л</span>ичный кабинет
         </a>
       </li>

@@ -7,7 +7,9 @@ class SearcherController < ApplicationController
     @query = params[:q] || ""
     redirect_to main_path if @query == ""
 
-    @ads = Ad.where("UPPER(tags_for_search) LIKE UPPER(?)", "%"+@query.split(",").map { |x| x.strip.upcase }.sort.join("%")+"%")
+
+
+    @ads = Ad.where("UPPER(tags_for_search) LIKE UPPER(?)", "%"+@query.split(",").map { |x| x.strip }.sort.join("%")+"%")
   end
 
 end
