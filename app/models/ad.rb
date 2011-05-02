@@ -6,7 +6,7 @@ class Ad < ActiveRecord::Base
 
   def before_save_method
     return if tags == nil
-    self.tags_for_search = tags.split(",").map { |x| x.strip.upcase }.sort.join(",")
+    self.tags_for_search = tags.split(",").map { |x| x.strip }.sort.join(",")
   end
 
   def root_messages

@@ -4,7 +4,7 @@
 <div>Тэги: <%= @ad.tags %></div>
 <%= link_to "Редактировать", edit_ad_path(@ad) if user_signed_in? && current_user.can_edit_ad?(@ad) %>
 <%= render :partial => 'partials/add_message_form', :locals => {:parent_message => nil, :ad => @ad, :is_visible => true} %>
-<h3>Messages count: <%= @ad.messages.size %></h3>
+<h3>Количество сообщений: <%= @ad.messages.size %></h3>
 <% @ad.root_messages.each do |message| %>
     <%= render :partial => 'partials/view_message', :locals => {:message => message} %>
 <% end %>
