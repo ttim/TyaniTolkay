@@ -22,6 +22,10 @@ class UserController < ApplicationController
     promote_action(:moderator)
   end
 
+  def to_simple_user
+    promote_action(:user)
+  end
+
   def remove
     user = User.find_by_id(params[:id])
     if current_user.can_remove_user?(user)

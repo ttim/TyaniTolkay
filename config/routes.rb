@@ -10,6 +10,7 @@ TyaniTolkay::Application.routes.draw do
   match "user/:id" => "user#view", :as => :view_user
   match "user/:id/to_admin" => "user#to_admin", :as => :user_to_admin
   match "user/:id/to_moderator" => "user#to_moderator", :as => :user_to_moderator
+  match "user/:id/to_simple_user" => "user#to_simple_user", :as => :user_to_simple_user
   match "user/:id/remove" => "user#remove", :as => :remove_user
 
   match "ad/save" => "ad#save", :as => :save_ad

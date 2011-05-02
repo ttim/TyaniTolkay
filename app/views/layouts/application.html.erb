@@ -34,10 +34,13 @@
           <% if (user_signed_in?) %>
               <b><%= link_to current_user.name, view_user_path(current_user) %>
                 <%= "("+current_user.role+")" unless current_user.role == "user" %>
-              </b>: <%= link_to "Logout", :destroy_user_session %>
+              </b>: <%= link_to "Выход", :destroy_user_session %>
               <br/>
           <% else %>
-              <%= link_to "Login", :new_user_session %> <%= link_to "Регистрация", :new_user_registration %>
+              <%= link_to "Вход", :new_user_session %> <%= link_to "Регистрация", :new_user_registration %>
+          <% end %>
+          <% if (user_signed_in? and current_user.admin?) then %>
+            <%= link_to "Все пользователи", user_list_path %>
           <% end %>
         </div>
 

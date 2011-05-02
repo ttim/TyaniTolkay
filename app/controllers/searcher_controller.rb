@@ -43,11 +43,11 @@ class SearcherController < ApplicationController
 
     if price_to != nil then
       @ads = Ad.
-          where("UPPER(tags_for_search) LIKE UPPER(?)", "%"+@query.split(",").map { |x| x.strip }.sort.join("%")+"%").
+          where("UPPER(tags_for_search) LIKE UPPER(?)", "%"+@query.split(%r{[, ]}).map { |x| x.strip }.sort.join("%")+"%").
           where("price <= ?", price_to)
     else
       @ads = Ad.
-          where("UPPER(tags_for_search) LIKE UPPER(?)", "%"+@query.split(",").map { |x| x.strip }.sort.join("%")+"%")
+          where("UPPER(tags_for_search) LIKE UPPER(?)", "%"+@query.split(%r{[, ]}).map { |x| x.strip }.sort.join("%")+"%")
     end
   end
 

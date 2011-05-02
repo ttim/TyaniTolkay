@@ -2,11 +2,14 @@
 <div>Имя: <%= @user.name %></div>
 <div>Email: <%= @user.email %></div>
 <div>Роль: <%= @user.role %>
-  <% if current_user != nil && current_user.can_promote?(@user, :admin) %>
-      , <%= link_to "To admin", user_to_admin_path %>
+  <% if current_user != nil && @user.role != 'admin' && current_user.can_promote?(@user, :admin) %>
+      , <%= link_to "Сделать админом", user_to_admin_path %>
   <% end %>
-  <% if current_user != nil && current_user.can_promote?(@user, :moderator) %>
-      , <%= link_to "To moderator", user_to_moderator_path %>
+  <% if current_user != nil && @user.role != 'moderator' && current_user.can_promote?(@user, :moderator) %>
+      , <%= link_to "Сделать модератором", user_to_moderator_path %>
+  <% end %>
+  <% if current_user != nil && @user.role != 'user' && current_user.can_promote?(@user, :user) %>
+      , <%= link_to "Сделать сделать обычным юзером", user_to_simple_user_path %>
   <% end %>
 </div>
 <br>
