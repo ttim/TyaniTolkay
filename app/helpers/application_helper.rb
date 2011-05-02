@@ -1,28 +1,20 @@
 module ApplicationHelper
-  #add unicode correct string methods
-  begin
-    require 'unicode'
-    String.class_eval 'def downcase
-     Unicode::downcase(self)
-   end
-   def downcase!
-     self.replace downcase
-   end
+  def is_num?(str)
+    if str == nil then
+      return false
+    end
+    Integer(str)
+  rescue ArgumentError
+    false
+  else
+    true
+  end
+end
 
-   def upcase
-     Unicode::upcase(self)
-   end
-   def upcase!
-     self.replace upcase
-   end
-   def capitalize
-     Unicode::capitalize(self)
-   end
-
-   def capitalize!
-     self.replace capitalize
-   end'
-  rescue LoadError
-    # gem на машине не установлен - об этом полезно ругнуться в логи
+class Array
+  # If +number+ is greater than the size of the array, the method
+  # will simply return the array itself sorted randomly
+  def randomly_pick(number)
+    sort_by { rand }.slice(0...number)
   end
 end

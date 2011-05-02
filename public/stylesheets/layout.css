@@ -333,6 +333,14 @@ ul.bigLinks li a:hover span.desc {
   padding: 1px 2px;
   background: #d9f5da;
   border-top: 1px solid #c2edbd;
+}
 
+input.price {
+    width: 15%;
+}
+
+textarea.desc {
+    height: 100px;
+}
 
 

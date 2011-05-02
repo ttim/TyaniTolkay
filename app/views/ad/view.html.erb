@@ -1,7 +1,5 @@
 <div>Пользователь: <%= @ad.user.name %></div>
-<div>Описание: <%= @ad.desc %></div>
-<div>Цена: <%= @ad.price %></div>
-<div>Тэги: <%= @ad.tags %></div>
+<%= render :partial => 'partials/view_ad', :locals => { :ad => @ad } %>
 <%= link_to "Редактировать", edit_ad_path(@ad) if user_signed_in? && current_user.can_edit_ad?(@ad) %>
 <%= render :partial => 'partials/add_message_form', :locals => {:parent_message => nil, :ad => @ad, :is_visible => true} %>
 <h3>Количество сообщений: <%= @ad.messages.size %></h3>

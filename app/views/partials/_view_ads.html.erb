@@ -1,7 +1,5 @@
 <% ads.each do |ad| %>
-    <div><span class="highlight">Описание</span>: <%= ad.desc %></div>
-    <div><span class="highlight">Тэги</span>: <%= render :partial => "partials/tags", :locals => {:tags => ad.tags} %></div>
-    <div><span class="highlight">Цена</span>: <%= ad.price %></div>
+    <%= render :partial => 'partials/view_ad', :locals => { :ad => ad } %>
     <div><%= link_to "Просмотр", view_ad_path(ad.id) %></div>
     <% if current_user.can_remove_ad?(ad) %>
         <%= link_to "Удалить", remove_ad_path(ad.id) %>
