@@ -1,29 +1,78 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>TyaniTolkay</title>
-  <%= stylesheet_link_tag :all %>
+  <title>Тяни-Толкай</title>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
+  <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8"/>
+  <meta name="keywords" content=""/>
+  <meta name="description" content=""/>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/html.css" media="screen, projection, tv "/>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/layout.css" media="screen, projection, tv"/>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/print.css" media="print"/>
+  <!-- Conditional comment to apply opacity fix for IE #content background.
+       Invalid CSS, but can be removed without harming design -->
+  <!--[if gt IE 5]>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/ie.css" media="screen, projection, tv "/>
+  <![endif]-->
 </head>
-<body>
-<div id="_auth">
-  <% if (user_signed_in?) %>
-      <b><%= link_to current_user.name, view_user_path(current_user) %>
-        <%= "("+current_user.role+")" unless current_user.role == "user" %>
-      </b>: <%= link_to "Logout", :destroy_user_session %>
-      <br/>
-      <%= link_to "Add new ad", create_ad_path %>
-  <% else %>
-      <%= link_to "Login", :new_user_session %> <%= link_to "Registration", :new_user_registration %>
-  <% end %>
-</div>
 
+<body>
 <p class="notice"><%= notice %></p>
 
 <p class="alert"><%= alert %></p>
 
-<%= yield %>
+<!-- #wrapper: centers the content and sets the width -->
+<div id="wrapper">
+  <!-- #content: applies the white, dropshadow background -->
+  <div id="content">
+    <!-- #header: holds site title and subtitle -->
+    <div id="header">
+      <div id="login_block">
+        <div id="_auth">
+          <% if (user_signed_in?) %>
+              <b><%= link_to current_user.name, view_user_path(current_user) %>
+                <%= "("+current_user.role+")" unless current_user.role == "user" %>
+              </b>: <%= link_to "Logout", :destroy_user_session %>
+              <br/>
+          <% else %>
+              <%= link_to "Login", :new_user_session %> <%= link_to "Registration", :new_user_registration %>
+          <% end %>
+        </div>
 
+      </div>
+
+      <a href="<%= main_path %>"><h1><span class="big darkBrown">Т</span>яни-<span class="big darkBrown">Т</span>олкай</h1></a>
+
+      <h2><span class="highlight">Доска Ваших объявлений</span></h2>
+
+    </div>
+    <!-- #menu: topbar menu of the site.  Use the helper classes .two, .three, .four and .five to set
+                the widths for 2, 3, 4 and 5 item menus. -->
+    <!-- #page: holds all page content, as well as footer -->
+    <% path = request.env['PATH_INFO'] %>
+    <ul id="menu" class="two">
+      <li>
+        <a href="<%= main_path %>"
+           title="Поиск по объявлениям" class="<%= path == main_path ? "here" : "" %>">
+          <span class="big">О</span>бъявления
+        </a>
+      </li>
+      <li>
+        <a href="<%= user_signed_in? ? create_ad_path : new_user_session_path %>"
+           title="Разместить объявление" class="<%= path == create_ad_path ? "here" : "" %>">
+          <span class="big">Р</span>азместить
+        </a>
+      </li>
+    </ul>
+
+
+    <div id="page">
+
+      <%= yield %>
+    </div>
+  </div>
+</div>
 </body>
 </html>
