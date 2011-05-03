@@ -10,12 +10,15 @@ class AdController < ApplicationController
 
   def save
     if (user_signed_in?)
-      ad = Ad.new(params[:ad])
-      ad.user = current_user
+      ad = Ad.find_by_id(params[:ad][:id])
+      if (ad == nil) then
+        ad = Ad.new(params[:ad])
+        ad.user = current_user
+      else
+        ad.update_attributes!(params[:ad])
+      end
+
       ad.save!
-
-      puts ad.id
-
       redirect_to view_ad_path(ad.id)
     end
   end

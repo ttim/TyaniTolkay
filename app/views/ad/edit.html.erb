@@ -1,5 +1,8 @@
-<h1><%=  @action == :new ? "Создать объявление" : "Обновить объявление"%></h1>
+<h1><%= @action == :new ? "Создать объявление" : "Обновить объявление" %></h1>
 <%= form_for(@ad, :url => save_ad_path(), :html => {:method => :post}) do |f| %>
+
+    <%= f.hidden_field :id%>
+
     <p><%= f.label "Описание: " %>
       <%= f.text_area :desc, :class => "desc" %></p>
 

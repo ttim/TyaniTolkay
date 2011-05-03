@@ -1,7 +1,7 @@
 <% ads.each do |ad| %>
     <%= render :partial => 'partials/view_ad', :locals => { :ad => ad } %>
     <div><%= link_to "Просмотр", view_ad_path(ad.id) %></div>
-    <% if current_user.can_remove_ad?(ad) %>
+    <% if user_signed_in? && current_user.can_remove_ad?(ad) %>
         <%= link_to "Удалить", remove_ad_path(ad.id) %>
     <% end %>
     <hr width="90%" align="left"/>
