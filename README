@@ -1,1 +1,16 @@
-Simple message board
+## Доска объявлений "Тяни-Толкай". ##
+
+### Есть два способа установки приложения ###
+1) на облачный хостинг heroku (heroku.com).
+ 	для этого нужно:
+     а) поставить Git, Ruby и RubyGems (ruby-lang.org, http://rubygems.org/, http://git-scm.com/)
+     б) скачать репозиторий приложения https://github.com/ttim/TyaniTolkay
+     в) создать профиль и приложение на heroku.com
+     г) выполнить команду heroku create в директории скачанного приложения
+     д) сделать git push heroku master
+2) на локальный компьютер.
+     повторить пункты а и б
+     в) поставить гемы rails, sqlite3, devise (gem install rails etc)
+     д) скачать и поставить IDE для руби RubyMine (http://www.jetbrains.com/ruby/) для редактирования и запуска проекта
+     е) если же только запустить то выполнить ruby script/rails server в директории приложения.
+
